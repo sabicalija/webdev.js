@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@fhtw/vuepress-plugin-directory-classifier@canary":
+  version "0.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@fhtw/vuepress-plugin-directory-classifier/-/vuepress-plugin-directory-classifier-0.0.0-beta.4.tgz#fc58626c0268d632413ef68b8639119944c338eb"
+  integrity sha512-CicywrpjJsBYpr2ptdih1ObuX9tpLtul7xRORGYbXyg275SDchu9hoeJaipx7UVvhVWK5uIKSWjzUF3AnCAdyw==
+
 "@nuxt/opencollective@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@nuxt/opencollective/-/opencollective-0.3.0.tgz#11d8944dcf2d526e31660bb69570be03f8fb72b7"

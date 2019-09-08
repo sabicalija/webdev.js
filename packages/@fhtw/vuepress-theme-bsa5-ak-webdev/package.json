@@ -1,6 +1,6 @@
 {
   "name": "@fhtw/vuepress-theme-bsa5-ak-webdev",
-  "version": "0.0.0-beta.3+896c5ef",
+  "version": "0.0.0-beta.4",
   "description": "> TODO: description",
   "author": "Alija Sabic <sabic.alija@gmail.com>",
   "homepage": "https://github.com/sabicalija/webdev.js#readme",
@@ -24,7 +24,7 @@
     "url": "https://github.com/sabicalija/webdev.js/issues"
   },
   "dependencies": {
-    "@fhtw/vuepress-plugin-directory-classifier": "^0.0.0",
+    "@fhtw/vuepress-plugin-directory-classifier": "canary",
     "@vuepress/theme-default": "^1.0.4",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0",
