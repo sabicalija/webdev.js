@@ -32,7 +32,6 @@
   "bugs": {
     "url": "https://github.com/sabicalija/webdev.js/issues"
   },
-  "gitHead": "896c5ef47d077abe8b9c52eaadad504865ca01c8",
   "devDependencies": {
     "concurrently": "^4.1.2",
     "ts-node": "^8.3.0",
@@ -41,5 +40,17 @@
   },
   "dependencies": {
     "@vuepress/shared-utils": "^1.0.4"
-  }
+  },
+  "xo": {
+    "extends": [
+      "rem",
+      "plugin:prettier/recommended",
+      "xo-typescript"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "rules": {}
+  },
+  "gitHead": "896c5ef47d077abe8b9c52eaadad504865ca01c8"
 }
