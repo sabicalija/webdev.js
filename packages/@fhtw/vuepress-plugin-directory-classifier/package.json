@@ -1,16 +1,15 @@
 {
   "name": "@fhtw/vuepress-plugin-directory-classifier",
-  "version": "0.0.0-beta.0",
+  "version": "0.0.0",
   "description": "Vuepress plugin for directory based classification",
   "author": "Alija Sabic <sabic.alija@gmail.com>",
   "homepage": "https://github.com/sabicalija/webdev.js#readme",
   "license": "GPL-3.0",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "directories": {},
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "publishConfig": {
     "access": "public",
