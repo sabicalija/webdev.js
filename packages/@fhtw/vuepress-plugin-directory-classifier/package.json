@@ -21,10 +21,25 @@
     "path": "packages/@fhtw/vuepress-plugin-directory-classifier"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "dev": "concurrently \"npm:dev:client\" \"npm:dev:node\" \"npm:build:components\"",
+    "build": "concurrently \"npm:build:client\" \"npm:build:node\" \"npm:build:components\"",
+    "dev:client": "tsc -p tsconfig.client.json --watch",
+    "dev:node": "tsc -p tsconfig.node.json --watch",
+    "build:client": "tsc -p tsconfig.client.json",
+    "build:node": "tsc -p tsconfig.node.json",
+    "build:components": "mkdir -p lib/client/components && cp -r src/client/components lib/client"
   },
   "bugs": {
     "url": "https://github.com/sabicalija/webdev.js/issues"
   },
-  "gitHead": "896c5ef47d077abe8b9c52eaadad504865ca01c8"
+  "gitHead": "896c5ef47d077abe8b9c52eaadad504865ca01c8",
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.2",
+    "xo": "^0.24.0"
+  },
+  "dependencies": {
+    "@vuepress/shared-utils": "^1.0.4"
+  }
 }
