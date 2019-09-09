@@ -1,6 +1,6 @@
 # `vuepress-plugin-directory-classifier`
 
-> TODO: description
+> TODO: description 
 
 ## Usage
 

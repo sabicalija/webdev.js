@@ -1,6 +1,6 @@
 # `vuepress-theme-bsa5-ak-webdev`
 
-> TODO: description
+> TODO: description 
 
 ## Usage
 
