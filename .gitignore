@@ -1,7 +1,4 @@
 # Ignore
-
 node_modules/
-packages/@fhtw/vuepress-plugin-directory-classifier/lib/
-types/
 
 # Allow
