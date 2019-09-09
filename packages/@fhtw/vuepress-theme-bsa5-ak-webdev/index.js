@@ -8,7 +8,7 @@ module.exports = (themeConfig, ctx) => {
         itemLayout: "Project",
         nav: {
           title: "Projects",
-          order: 3
+          order: 2
         }
       },
       {
@@ -18,13 +18,20 @@ module.exports = (themeConfig, ctx) => {
         itemLayout: "Reference",
         nav: {
           title: "References",
-          order: 5
+          order: 3
         }
       }
     ]
   };
 
-  const plugins = [["@fhtw/directory-classifier", defaultDirectoryClassifierPluginOptions]];
+  const { modifyDirectoryClassifierOptions } = themeConfig;
+
+  const directoryClassifierPluginOptions =
+    typeof modifyDirectoryClassifierOptions === "function"
+      ? modifyDirectoryClassifierOptions(defaultDirectoryClassifierPluginOptions)
+      : defaultDirectoryClassifierPluginOptions;
+
+  const plugins = [["@fhtw/directory-classifier", directoryClassifierPluginOptions]];
   const config = {
     extend: "@vuepress/theme-default",
     plugins

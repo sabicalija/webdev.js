@@ -30,6 +30,7 @@ export function handleOptions(options: DirectoryClassifierPluginOptions, ctx: an
         `  Invalid directory classifier: ${chalk.cyan(directory.id)}, ` +
         `  ${chalk.gray(targetDir)} doesn't exist!`
     );
+    return false;
   });
 
   const extraPages: ExtraPage[] = [];
