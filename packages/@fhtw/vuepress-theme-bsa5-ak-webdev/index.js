@@ -8,7 +8,7 @@ module.exports = (themeConfig, ctx) => {
         itemLayout: "Project",
         nav: {
           title: "Projects",
-          order: 2
+          order: "append"
         }
       },
       {
@@ -18,7 +18,7 @@ module.exports = (themeConfig, ctx) => {
         itemLayout: "Reference",
         nav: {
           title: "References",
-          order: 3
+          order: "append"
         }
       }
     ]

@@ -1,7 +1,8 @@
 import { existsSync } from "fs";
 import { join, relative } from "path";
 
-import { chalk, logger } from "@vuepress/shared-utils";
+import logger from "../util/logger";
+import chalk from "chalk";
 
 import { DirectoryClassifierPluginOptions } from "./interface/Options";
 import { ExtraPage } from "./interface/ExtraPages";
@@ -11,7 +12,7 @@ import { PageEnhancer } from "./interface/PageEnhancers";
  * Handle options from users.
  * @param options
  * @param ctx Vuepress context.
- * return {*}
+ * @return {*}
  */
 export function handleOptions(options: DirectoryClassifierPluginOptions, ctx: any) {
   let { directories = [] } = options;
@@ -78,11 +79,21 @@ export function handleOptions(options: DirectoryClassifierPluginOptions, ctx: an
      */
     if (nav) {
       const { nav: navBar } = ctx.themeConfig;
-      if (nav.order > 0 && nav.order < navBar.length) {
-        navBar.splice(nav.order - 1, 0, {
-          text: nav.title,
-          link: indexPath
-        });
+
+      if (typeof nav.order === "string") {
+        if (nav.order === "append") {
+          navBar.push({
+            text: nav.title,
+            link: indexPath
+          });
+        }
+      } else {
+        if (nav.order > 0 && nav.order < navBar.length) {
+          navBar.splice(nav.order - 1, 0, {
+            text: nav.title,
+            link: indexPath
+          });
+        }
       }
     }
 
@@ -108,7 +119,7 @@ export function handleOptions(options: DirectoryClassifierPluginOptions, ctx: an
 /**
  * Capitalize first letter of every word.
  * @param text
- * return {*}
+ * @return {*}
  */
 function capitalize(text: string) {
   return text.replace(/(?:^|\s)\S/g, l => l.toUpperCase());
@@ -119,7 +130,7 @@ function capitalize(text: string) {
  * @param regularPath
  * @param indexPath
  * @param dirname
- * return {*}
+ * @return {*}
  */
 function filterIndexedPages(regularPath: string, indexPath: string, dirname: string) {
   return (
@@ -136,7 +147,7 @@ function filterIndexedPages(regularPath: string, indexPath: string, dirname: str
  * Tests if entry is first level entry of given index page.
  * @param itemPath
  * @param indexPath
- * return {*}
+ * @return {*}
  */
 function isFirstLevelEntry(itemPath: string, indexPath: string) {
   const p = relative(indexPath, itemPath);
