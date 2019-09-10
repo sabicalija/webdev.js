@@ -1,6 +1,6 @@
 {
   "name": "@fhtw/vuepress-plugin-directory-classifier",
-  "version": "0.0.2-beta.6",
+  "version": "0.0.2-beta.7",
   "description": "Vuepress plugin for directory based classification",
   "author": "Alija Sabic <sabic.alija@gmail.com>",
   "homepage": "https://github.com/sabicalija/webdev.js#readme",
@@ -32,9 +32,7 @@
   "bugs": {
     "url": "https://github.com/sabicalija/webdev.js/issues"
   },
-  "dependencies": {
-    "@vuepress/shared-utils": "^1.0.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "concurrently": "^4.1.2",
     "ts-node": "^8.3.0",

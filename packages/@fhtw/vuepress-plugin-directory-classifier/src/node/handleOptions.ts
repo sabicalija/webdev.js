@@ -1,7 +1,8 @@
 import { existsSync } from "fs";
 import { join, relative } from "path";
 
-import { logger, chalk } from "@vuepress/shared-utils";
+import logger from "../util/logger";
+import chalk from "chalk";
 
 import { DirectoryClassifierPluginOptions } from "./interface/Options";
 import { ExtraPage } from "./interface/ExtraPages";

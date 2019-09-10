@@ -1,6 +1,6 @@
 {
   "name": "@fhtw/vuepress-theme-bsa5-ak-webdev",
-  "version": "0.0.2-beta.6",
+  "version": "0.0.2-beta.7",
   "description": "Vuepress theme for webdev course (bsa5, ak)",
   "author": "Alija Sabic <sabic.alija@gmail.com>",
   "homepage": "https://github.com/sabicalija/webdev.js#readme",
@@ -24,7 +24,7 @@
     "url": "https://github.com/sabicalija/webdev.js/issues"
   },
   "dependencies": {
-    "@fhtw/vuepress-plugin-directory-classifier": "0.0.2-beta.7",
+    "@fhtw/vuepress-plugin-directory-classifier": "0.0.2-beta.8",
     "@vuepress/theme-default": "^1.0.4",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0",
