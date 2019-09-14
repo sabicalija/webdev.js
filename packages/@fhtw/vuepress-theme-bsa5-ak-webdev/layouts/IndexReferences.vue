@@ -19,17 +19,16 @@
 import BasicLayout from "@theme/layouts/BasicLayout.vue";
 import ReferenceCard from "@theme/components/references/ReferenceCard.vue";
 
-import mixin from "@dynamic/mixin";
-
 export default {
   components: {
     BasicLayout,
     ReferenceCard
   },
-  mixins: [mixin],
   computed: {
     references() {
-      return this.filterPages(this.$site.pages, this.$route.path);
+      return this.$site.pages.filter(({ regularPath }) =>
+        this.$page.frontmatter.indexed.includes(regularPath)
+      );
     }
   }
 };

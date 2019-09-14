@@ -1,6 +1,3 @@
-const { readFileSync } = require("fs");
-const { join } = require("path");
-
 module.exports = (themeConfig, ctx) => {
   const defaultDirectoryClassifierPluginOptions = {
     directories: [
@@ -37,19 +34,7 @@ module.exports = (themeConfig, ctx) => {
   const plugins = [["@fhtw/directory-classifier", directoryClassifierPluginOptions]];
   const config = {
     extend: "@vuepress/theme-default",
-    plugins,
-    clientDynamicModules() {
-      return [
-        {
-          name: "utils.js",
-          content: readFileSync(join(__dirname, "src/client/utils.js"), "utf-8")
-        },
-        {
-          name: "mixin.js",
-          content: readFileSync(join(__dirname, "src/client/mixins/filter.js"), "utf-8")
-        }
-      ];
-    }
+    plugins
   };
 
   return config;
