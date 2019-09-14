@@ -54,7 +54,8 @@ module.exports = (options: DirectoryClassifierPluginOptions, ctx: any) => {
       for (let { permalink, frontmatter } of indexPages) {
         frontmatter.indexed = pages
           .filter(({ regularPath }) => isIndexed(regularPath, permalink, frontmatter.subdirlevel))
-          .map(({ regularPath }) => regularPath);
+          .map(({ regularPath }) => regularPath)
+          .sort();
       }
 
       await Promise.all(indexPages.map(async page => ctx.addPage(page)));

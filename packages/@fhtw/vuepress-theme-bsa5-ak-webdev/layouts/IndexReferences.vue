@@ -3,12 +3,12 @@
     <div class="theme-default-content" slot="content">
       <div class="flex-container">
         <router-link
+          class="flex-item"
           v-for="reference of references"
           :key="reference.regularPath"
-          class="flex-item"
           :to="reference.regularPath"
         >
-          <ReferenceCard class="ref-card" :path="reference.regularPath" />
+          <ReferenceCard :path="reference.regularPath" />
         </router-link>
       </div>
     </div>
@@ -40,24 +40,21 @@ export default {
   flex-flow: row wrap;
   justify-content: center;
 }
-
 .flex-item {
   width: 31%;
   margin: 0.6vh auto;
   box-shadow: #ccc 1px 2px 5px 0px;
   transition: 0.5s width ease;
   min-width: 200px;
+  &:hover {
+    text-decoration: none !important;
+    box-shadow: #bbb 2px 4px 5px 0px;
+  }
 }
-
-.ref-card {
-  // display: block;
-  height: 100%;
-}
-
 @media (max-width: 768px) {
   .flex-item {
-    width: 100%;
-    height: 55vh;
+    width: 90%;
+    // height: 55vh;
   }
 }
 </style>

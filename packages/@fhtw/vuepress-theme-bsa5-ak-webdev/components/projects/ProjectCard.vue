@@ -1,14 +1,13 @@
 <template>
   <b-card no-body>
     <div slot="header">
-      <b-card-title class="mt-0">{{ref.title}}</b-card-title>
-      <b-card-sub-title>{{ref.subtitle}}</b-card-sub-title>
+      <b-card-title class="mt-0">{{project.title}}</b-card-title>
+      <b-card-sub-title>{{project.subtitle}}</b-card-sub-title>
     </div>
-
     <b-card-img-lazy
       class="card-image"
-      :src="ref.image || 'https://via.placeholder.com/800x600'"
-      :image-alt="ref.imageAlt || 'TODO: Alt. image description'"
+      :src="project.image || 'https://via.placeholder.com/400x600'"
+      :image-alt="project.imageAlt || 'TODO: Alt. image description'"
       bottom
     ></b-card-img-lazy>
   </b-card>
@@ -16,7 +15,7 @@
 
 <script>
 export default {
-  name: "ReferenceCard",
+  name: "ProjectCard",
   props: {
     path: {
       type: String,
@@ -24,13 +23,13 @@ export default {
     }
   },
   computed: {
-    refPage() {
+    projectPage() {
       return this.$site.pages.find(
         ({ regularPath }) => regularPath === this.path
       );
     },
-    ref() {
-      return this.refPage.frontmatter;
+    project() {
+      return this.projectPage.frontmatter;
     }
   }
 };
@@ -38,6 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-image {
+  height: 200px;
   object-fit: cover;
   object-position: 50% 50%;
 }
