@@ -1,5 +1,5 @@
 import { DirectoryClassifierPluginOptions } from "./interface/Options";
-import { handleOptions } from "./handleOptions";
+import { handleOptions, isIndexed } from "./handleOptions";
 
 function injectExtraAPI(ctx: any) {
   const { layoutComponentMap } = ctx.themeAPI;
@@ -20,7 +20,7 @@ function injectExtraAPI(ctx: any) {
 module.exports = (options: DirectoryClassifierPluginOptions, ctx: any) => {
   injectExtraAPI(ctx);
 
-  const { pageEnhancers, extraPages } = handleOptions(options, ctx);
+  const { pageEnhancers, indexPages } = handleOptions(options, ctx);
 
   return {
     name: "vuepress-plugin-directory-classifier",
@@ -46,8 +46,18 @@ module.exports = (options: DirectoryClassifierPluginOptions, ctx: any) => {
       });
     },
     /**
-     * 2. Add additional pages
+     * 2. Create pages according to user's config.
      */
-    additionalPages: extraPages
+    async ready() {
+      const { pages } = ctx;
+
+      for (let { permalink, frontmatter } of indexPages) {
+        frontmatter.indexed = pages
+          .filter(({ regularPath }) => isIndexed(regularPath, permalink, frontmatter.subdirlevel))
+          .map(({ regularPath }) => regularPath);
+      }
+
+      await Promise.all(indexPages.map(async page => ctx.addPage(page)));
+    }
   };
 };
