@@ -1,10 +1,10 @@
 <template>
   <basic-layout>
     <div class="theme-default-content" slot="content">
-      <div>
-        <span>{{$frontmatter}}</span>
-        <PDFDocument :url="'https://cdn.filestackcontent.com/5qOCEpKzQldoRsVatUPS'" :scale="2" />
-      </div>
+      <!-- <div> -->
+        <!-- <span>{{$frontmatter}}</span> -->
+        <PDFDocument :url="$frontmatter.pdf" :scale="2" />
+      <!-- </div> -->
     </div>
   </basic-layout>
 </template>

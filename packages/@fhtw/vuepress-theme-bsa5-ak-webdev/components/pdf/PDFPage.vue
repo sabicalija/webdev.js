@@ -1,14 +1,20 @@
-
+<!--
+<template>
+  <div>
+    <canvas class="pdf-canvas" ref="canvas"></canvas>
+  </div>
+</template>
+-->
 <script>
 export default {
   name: "PDFPage",
-  props: ["page", "scale"],
-  render(h) {
+  render: function(h) {
     const { canvasAttrs: attrs } = this;
-    return h("canvas", { attrs });
+    return h("canvas", { attrs, ref: "canvas" });
   },
+  props: ["page", "scale", "hide"],
   created() {
-    this.viewport = this.page.getViewport(this.scale);
+    this.viewport = this.page.getViewport({scale:this.scale});
   },
   computed: {
     canvasAttrs() {
@@ -30,10 +36,11 @@ export default {
         height: actualSizeHeight
       } = this.actualSizeViewport;
       const pixelRatio = window.devicePixelRatio || 1;
-      const [pixelWidth, pixelHeihgt] = [actualSizeWidth, actualSizeHeight].map(
+      const [pixelWidth, pixelHeight] = [actualSizeWidth, actualSizeHeight].map(
         dim => Math.ceil(dim / pixelRatio)
       );
-      return `width: ${pixelWidth}px; height: ${pixelHeight}px`;
+      // return `width: ${pixelWidth}px; height: ${pixelHeight}px`;
+      return "width: 100%; height: content";
     },
     actualSizeViewport() {
       return this.viewport.clone({ scale: this.scale });
@@ -43,10 +50,11 @@ export default {
     drawPage() {
       if (this.renderTask) return;
       const { viewport } = this;
-      const canvasContext = this.$el.getContext("2d");
+      const canvasContext = this.$refs.canvas.getContext("2d");
       const renderContext = { canvasContext, viewport };
       this.renderTask = this.page.render(renderContext);
       this.renderTask
+        .promise
         .then(() => this.$emit("rendered", this.page))
         .catch(this.destroyRenderTask);
     },
@@ -76,4 +84,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.pdf-canvas {
+  width: 100%;
+  height: content
+}
 </style>

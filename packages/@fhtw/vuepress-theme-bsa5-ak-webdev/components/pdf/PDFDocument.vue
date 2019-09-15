@@ -1,9 +1,9 @@
 <template>
-  <!-- <ClientOnly> -->
   <div class="pdf-document">
-    <PDFPage v-for="page in pages" :page="page" :scale="scale" :key="page.pageNumber" />
+    <transition-group name="list" tag="p">
+      <PDFPage v-for="page of pages" :page="page" :scale="scale" :key="page.pageNumber"  />
+    </transition-group>
   </div>
-  <!-- </ClientOnly> -->
 </template>
 
 <script>
@@ -18,28 +18,30 @@ export default {
   data() {
     return {
       pdf: undefined,
-      pages: []
+      pages: [],
+      currentPage: 1
     };
   },
   methods: {
     fetchPDF() {
-      import("pdfjs-dist/webpack")
-        // import(
-        //   "/home/alija/Git/github/sabicalija/webdev.js/node_modules/pdfjs-dist/webpack.js"
-        // )
-        .then(pdfjs => pdfjs.getDocument(this.url))
-        .then(pdf => (this.pdf = pdf));
+      const _self = this;
+      pdfjsLib.getDocument(_self.url).promise.then(pdf => (_self.pdf = pdf)).catch();
+    }
+  },
+  computed: {
+    page() {
+      return this.pages[this.currentPage];
     }
   },
   watch: {
     pdf(pdf) {
       this.pages = [];
       const promises = range(1, pdf.numPages).map(number =>
-        pdf.getPage(number)
+        pdf.getPage(number).catch(err => console.log("#err2"))
       );
       Promise.all(promises).then(pages => {
         this.pages = pages;
-      });
+      }).catch(err => console.log("err#1"));
     }
   },
   mounted() {
@@ -49,4 +51,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.pdf-document {
+
+}
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
 </style>
