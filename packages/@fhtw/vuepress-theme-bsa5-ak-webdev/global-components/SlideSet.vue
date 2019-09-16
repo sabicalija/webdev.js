@@ -5,11 +5,11 @@
     <span>Download</span>
     <span>Maximize</span>-->
 
-    <a :href="`${frontmatter.pdf}-presentation-43.pdf`" target="_blank">
-      <img class="icon" src="/assets/img/icons/43-light-custom.svg" alt="4:3" />
+    <a :href="`${base}${frontmatter.pdf}-presentation-43.pdf`" target="_blank">
+      <img class="icon" :src="`${base}/assets/img/icons/43-light-custom.svg`" alt="4:3" />
     </a>
-    <a :href="`${frontmatter.pdf}-presentation-169.pdf`" target="_blank">
-      <img class="icon" src="/assets/img/icons/169-light-custom.svg" alt="16:9" />
+    <a :href="`${base}${frontmatter.pdf}-presentation-169.pdf`" target="_blank">
+      <img class="icon" :src="`${base}/assets/img/icons/169-light-custom.svg`" alt="16:9" />
     </a>
   </div>
 </template>
@@ -32,6 +32,11 @@ export default {
       return this.$site.pages.find(
         ({ regularPath }) => regularPath === `${this.src}.html`
       ).frontmatter;
+    },
+    base() {
+      return this.$site.base === "/"
+        ? ""
+        : this.$site.base.substring(0, this.$site.base.length - 1);
     }
   }
 };
