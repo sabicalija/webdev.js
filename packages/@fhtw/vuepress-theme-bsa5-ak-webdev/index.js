@@ -10,7 +10,7 @@ module.exports = (themeConfig, ctx) => {
       ? modifyDirectoryClassifierOptions(defaultDirectoryClassifierPluginOptions)
       : defaultDirectoryClassifierPluginOptions;
 
-  const plugins = [["@fhtw/directory-classifier", directoryClassifierPluginOptions]];
+  const plugins = [["directory-classifier", directoryClassifierPluginOptions]];
   const extendMarkdown = (md) => {
     // md.set({ html: true, breaks: true, typographer: true, linkify: true });
   };

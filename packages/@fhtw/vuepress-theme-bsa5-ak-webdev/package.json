@@ -24,7 +24,8 @@
     "url": "https://github.com/sabicalija/webdev.js/issues"
   },
   "dependencies": {
-    "@vuepress/theme-default": "^1.5.0"
+    "@vuepress/theme-default": "^1.5.0",
+    "vuepress-plugin-directory-classifier": "^0.1.0"
   },
   "gitHead": "896c5ef47d077abe8b9c52eaadad504865ca01c8"
 }
