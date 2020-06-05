@@ -5,9 +5,9 @@
     <span>Download</span>
     <span>Maximize</span>-->
 
-    <a :href="`${base}${frontmatter.pdf}-presentation-43.pdf`" target="_blank">
+    <!-- <a :href="`${base}${frontmatter.pdf}-presentation-43.pdf`" target="_blank">
       <img class="icon" :src="`${base}/assets/img/icons/43-light-custom.svg`" alt="4:3" />
-    </a>
+    </a>-->
     <a :href="`${base}${frontmatter.pdf}-presentation-169.pdf`" target="_blank">
       <img class="icon" :src="`${base}/assets/img/icons/169-light-custom.svg`" alt="16:9" />
     </a>

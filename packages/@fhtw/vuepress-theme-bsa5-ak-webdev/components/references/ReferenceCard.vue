@@ -1,8 +1,8 @@
 <template>
   <b-card no-body>
     <div slot="header">
-      <b-card-title class="mt-0">{{ref.title}}</b-card-title>
-      <b-card-sub-title>{{ref.subtitle}}</b-card-sub-title>
+      <b-card-title class="mt-0 reference-title">{{ref.title}}</b-card-title>
+      <b-card-sub-title class="reference-subtitle">{{ref.subtitle}}</b-card-sub-title>
     </div>
 
     <b-card-img-lazy
@@ -37,8 +37,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.reference-title {
+  height: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.reference-subtitle {
+  margin-top: 0.4rem;
+  height: 1rem;
+}
 .card-image {
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: 50%;
 }
 </style>

@@ -41,7 +41,7 @@ export default {
   justify-content: center;
 }
 .flex-item {
-  width: 31%;
+  width: 30%;
   margin: 0.6vh auto;
   box-shadow: #ccc 1px 2px 5px 0px;
   transition: 0.5s width ease;
